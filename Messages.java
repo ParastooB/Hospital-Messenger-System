@@ -253,6 +253,7 @@ public class Messages {
 			
 		}
 	}
+	
 	void print_all_messages(int preview){ //allms
 		Map<Integer, String> map = new TreeMap<Integer, String>(allms);
 		Set<Entry<Integer, String>> u_set = map.entrySet();
@@ -260,15 +261,14 @@ public class Messages {
 		while(i.hasNext()){
 			Map.Entry<Integer, String> token = i.next();
 			if(token.getValue().length() < preview){
-			System.out.print("      " + token.getKey() + "->" + token.getValue().replaceAll("[\\p{Cc}\\p{Cf}\\p{Co}\\p{Cn}]", "")  +"\n");
-			//System.out.print("      " + token.getKey() + "->" + token.getValue() +"\n");
+			System.out.print("      " + token.getKey() + "->" + token.getValue().replaceAll("\\p{C}", "")  +"\n");
 			}
 			else{
-				System.out.print("      " + token.getKey() + "->" + token.getValue().substring(0,preview).replaceAll("[\\p{Cc}\\p{Cf}\\p{Co}\\p{Cn}]", "")  +" ...\n");
-				//System.out.print("      " + token.getKey() + "->" + token.getValue().substring(0,preview)  +" ...\n");
+			System.out.print("      " + token.getKey() + "->" + token.getValue().substring(0,preview).replaceAll("\\p{C}", "")  +" ...\n");
 			}
 		}
 	}
+	
 	
 	void print_new_messages(){ //newms
 		print_new_or_old_messages(newms);
