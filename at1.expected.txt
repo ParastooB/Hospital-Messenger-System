@@ -8,15 +8,15 @@
   2:  OK
   There are no users registered in the system yet.
 
-->add_user(0, "aaa")
-  3:  ERROR
+->add_user(0,"aaa")
+  3:  ERROR 
   ID must be a positive integer.
 
-->add_user(1, "")
-  4:  ERROR
+->add_user(1,"")
+  4:  ERROR 
   User name must start with a letter.
 
-->add_user(1, "Dr. Dolittle")
+->add_user(1,"Dr. Dolittle")
   5:  OK
   Users:
       1->Dr. Dolittle
@@ -26,11 +26,11 @@
   New messages:
   Old/read messages:
 
-->add_user(1, "Dr. Lecter")
-  6:  ERROR
+->add_user(1,"Dr. Lecter")
+  6:  ERROR 
   ID already in use.
 
-->add_user(2, "Dr. Frankenstein")
+->add_user(2,"Dr. Frankenstein")
   7:  OK
   Users:
       1->Dr. Dolittle
@@ -41,7 +41,7 @@
   New messages:
   Old/read messages:
 
-->add_user(3, "Dr. Rieux")
+->add_user(3,"Dr. Rieux")
   8:  OK
   Users:
       1->Dr. Dolittle
@@ -53,7 +53,7 @@
   New messages:
   Old/read messages:
 
-->add_user(4, "Dr. Higgins")
+->add_user(4,"Dr. Higgins")
   9:  OK
   Users:
       1->Dr. Dolittle
@@ -66,7 +66,7 @@
   New messages:
   Old/read messages:
 
-->add_user(5, "Florence Nightingale")
+->add_user(5,"Florence Nightingale")
   10:  OK
   Users:
       1->Dr. Dolittle
@@ -80,7 +80,7 @@
   New messages:
   Old/read messages:
 
-->add_user(6, "Mary Todd Lincoln")
+->add_user(6,"Mary Todd Lincoln")
   11:  OK
   Users:
       1->Dr. Dolittle
@@ -95,7 +95,7 @@
   New messages:
   Old/read messages:
 
-->add_user(7, "Helen Fairchild")
+->add_user(7,"Helen Fairchild")
   12:  OK
   Users:
       1->Dr. Dolittle
@@ -111,7 +111,7 @@
   New messages:
   Old/read messages:
 
-->add_user(8, "Office assistant")
+->add_user(8,"Office assistant")
   13:  OK
   Users:
       1->Dr. Dolittle
@@ -128,11 +128,11 @@
   New messages:
   Old/read messages:
 
-->add_group(0, "Doctors")
-  14:  ERROR
+->add_group(0,"Doctors")
+  14:  ERROR 
   ID must be a positive integer.
 
-->add_group(1, "Doctors")
+->add_group(1,"Doctors")
   15:  OK
   Users:
       1->Dr. Dolittle
@@ -150,11 +150,11 @@
   New messages:
   Old/read messages:
 
-->add_group(1, "Nurses")
-  16:  ERROR
+->add_group(1,"Nurses")
+  16:  ERROR 
   ID already in use.
 
-->add_group(2, "Nurses")
+->add_group(2,"Nurses")
   17:  OK
   Users:
       1->Dr. Dolittle
@@ -173,7 +173,7 @@
   New messages:
   Old/read messages:
 
-->add_group(3, "Staff")
+->add_group(3,"Staff")
   18:  OK
   Users:
       1->Dr. Dolittle
@@ -200,11 +200,11 @@
   3->Staff
 
 ->register_user(0,1)
-  20:  ERROR
+  20:  ERROR 
   ID must be a positive integer.
 
 ->register_user(1,0)
-  21:  ERROR
+  21:  ERROR 
   ID must be a positive integer.
 
 ->register_user(1,1)
@@ -229,7 +229,7 @@
   Old/read messages:
 
 ->register_user(1,1)
-  23:  ERROR
+  23:  ERROR 
   This registration already exists.
 
 ->register_user(5,3)
@@ -493,19 +493,19 @@
   There are no old messages for this user.
 
 ->register_user(10,2)
-  36:  ERROR
+  36:  ERROR 
   User with this ID does not exist.
 
 ->send_message(0,1,"first message")
-  37:  ERROR
+  37:  ERROR 
   ID must be a positive integer.
 
 ->send_message(1,0,"first message")
-  38:  ERROR
+  38:  ERROR 
   ID must be a positive integer.
 
 ->send_message(1,1,"")
-  39:  ERROR
+  39:  ERROR 
   A message may not be an empty string.
 
 ->send_message(1,1,"Fellows, should we take this patient in? As a cardiologist, I don't have the heart to say no.")
@@ -604,10 +604,10 @@
   Old/read messages:
 
 ->send_message(4,1,"test")
-  43:  ERROR
+  43:  ERROR 
   User not authorized to send messages to the specified group.
 
-->send_message(8,3,"Isn’t it a bit unnerving that doctors call what they do 'practice'?")
+->send_message(8,3,"Isnâ€™t it a bit unnerving that doctors call what they do 'practice'?")
   44:  OK
   Users:
       1->Dr. Dolittle
@@ -634,7 +634,7 @@
       1->Fellows, should ...
       2->Being a surgeon ...
       3->Let's run the i ...
-      4->Isn’t it a bit  ...
+      4->Isnâ€™t it a bi ...
   New messages:
       [1, Dr. Dolittle]->{2, 3}
       [2, Dr. Frankenstein]->{1, 2, 4}
@@ -671,7 +671,7 @@
       1->Fellows, should ...
       2->Being a surgeon ...
       3->Let's run the i ...
-      4->Isn’t it a bit  ...
+      4->Isnâ€™t it a bi ...
       5->Hey, I heard th ...
   New messages:
       [1, Dr. Dolittle]->{2, 3}
@@ -686,36 +686,36 @@
 ->list_new_messages(1)
   46:  OK
   New/unread messages for user [1, Dr. Dolittle]:
-     2->Being a surgeon ...
-     3->Let's run the i ...
+      2->Being a surgeon ...
+      3->Let's run the i ...
 
 ->list_new_messages(2)
   47:  OK
   New/unread messages for user [2, Dr. Frankenstein]:
-     1->Fellows, should ...
-     2->Being a surgeon ...
-     4->Isn’t it a bit  ...
-     5->Hey, I heard th ...
+      1->Fellows, should ...
+      2->Being a surgeon ...
+      4->Isnâ€™t it a bi ...
+      5->Hey, I heard th ...
 
 ->list_new_messages(3)
   48:  OK
   New/unread messages for user [3, Dr. Rieux]:
-     1->Fellows, should ...
-     3->Let's run the i ...
+      1->Fellows, should ...
+      3->Let's run the i ...
 
 ->list_new_messages(4)
   49:  OK
   New/unread messages for user [4, Dr. Higgins]:
-     4->Isn’t it a bit  ...
+      4->Isnâ€™t it a bi ...
 
 ->list_new_messages(5)
   50:  OK
   New/unread messages for user [5, Florence Nightingale]:
-     4->Isn’t it a bit  ...
-     5->Hey, I heard th ...
+      4->Isnâ€™t it a bi ...
+      5->Hey, I heard th ...
 
 ->list_new_messages(9)
-  51:  ERROR
+  51:  ERROR 
   User with this ID does not exist.
 
 ->read_message(1,3)
@@ -746,7 +746,7 @@
       1->Fellows, should ...
       2->Being a surgeon ...
       3->Let's run the i ...
-      4->Isn’t it a bit  ...
+      4->Isnâ€™t it a bi ...
       5->Hey, I heard th ...
   New messages:
       [1, Dr. Dolittle]->{2}
@@ -787,7 +787,7 @@
       1->Fellows, should ...
       2->Being a surgeon ...
       3->Let's run the i ...
-      4->Isn’t it a bit  ...
+      4->Isnâ€™t it a bi ...
       5->Hey, I heard th ...
   New messages:
       [1, Dr. Dolittle]->{2}
@@ -829,7 +829,7 @@
       1->Fellows, should ...
       2->Being a surgeon ...
       3->Let's run the i ...
-      4->Isn’t it a bit  ...
+      4->Isnâ€™t it a bi ...
       5->Hey, I heard th ...
   New messages:
       [1, Dr. Dolittle]->{2}
@@ -844,14 +844,14 @@
       [2, Dr. Frankenstein]->{1, 2}
 
 ->read_message(2,2)
-  55:  ERROR
+  55:  ERROR 
   Message has already been read. See `list_old_messages'.
 
 ->list_old_messages(2)
   56:  OK
   Old/read messages for user [2, Dr. Frankenstein]:
-     1->Fellows, should ...
-     2->Being a surgeon ...
+      1->Fellows, should ...
+      2->Being a surgeon ...
 
 ->delete_message(2,2)
   57:  OK
@@ -880,7 +880,7 @@
       1->Fellows, should ...
       2->Being a surgeon ...
       3->Let's run the i ...
-      4->Isn’t it a bit  ...
+      4->Isnâ€™t it a bi ...
       5->Hey, I heard th ...
   New messages:
       [1, Dr. Dolittle]->{2}
@@ -897,13 +897,13 @@
 ->list_old_messages(2)
   58:  OK
   Old/read messages for user [2, Dr. Frankenstein]:
-     1->Fellows, should ...
+      1->Fellows, should ...
 
 ->delete_message(2,2)
-  59:  ERROR
+  59:  ERROR 
   Message with this ID not found in old/read messages.
 
-->send_message(7,2,"As to diseases, make a habit of two things — to help, or at least, to do no harm.")
+->send_message(7,2,"As to diseases, make a habit of two things â€” to help, or at least, to do no harm.")
   60:  OK
   Users:
       1->Dr. Dolittle
@@ -930,7 +930,7 @@
       1->Fellows, should ...
       2->Being a surgeon ...
       3->Let's run the i ...
-      4->Isn’t it a bit  ...
+      4->Isnâ€™t it a bi ...
       5->Hey, I heard th ...
       6->As to diseases, ...
   New messages:
@@ -946,7 +946,7 @@
       [2, Dr. Frankenstein]->{1}
 
 ->set_message_preview(0)
-  61:  ERROR
+  61:  ERROR 
   Message length must be greater than zero.
 
 ->set_message_preview(25)
@@ -976,7 +976,7 @@
       1->Fellows, should we take t ...
       2->Being a surgeon, I choose ...
       3->Let's run the idea by our ...
-      4->Isn’t it a bit unnerving  ...
+      4->Isnâ€™t it a bit unnervin ...
       5->Hey, I heard this!
       6->As to diseases, make a ha ...
   New messages:
@@ -994,8 +994,8 @@
 ->list_new_messages(3)
   63:  OK
   New/unread messages for user [3, Dr. Rieux]:
-     1->Fellows, should we take t ...
-     3->Let's run the idea by our ...
+      1->Fellows, should we take t ...
+      3->Let's run the idea by our ...
 
 ->list_groups
   64:  OK
