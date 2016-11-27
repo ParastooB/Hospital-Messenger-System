@@ -8,31 +8,31 @@
   2:  OK
   There are no users registered in the system yet.
 
-->add_group(0, "aaa")
-  3:  ERROR
+->add_group(0,"aaa")
+  3:  ERROR 
   ID must be a positive integer.
 
-->add_group(1, "")
-  4:  ERROR
+->add_group(1,"")
+  4:  ERROR 
   Group name must start with a letter.
 
-->add_group(1, " ")
-  5:  ERROR
+->add_group(1," ")
+  5:  ERROR 
   Group name must start with a letter.
 
-->add_group(0, "")
-  6:  ERROR
+->add_group(0,"")
+  6:  ERROR 
   ID must be a positive integer.
 
 ->list_groups
   7:  OK
   There are no groups registered in the system yet.
 
-->add_group(1, "8bh")
-  8:  ERROR
+->add_group(1,"8bh")
+  8:  ERROR 
   Group name must start with a letter.
 
-->add_group(1, "Doctors")
+->add_group(1,"Doctors")
   9:  OK
   Users:
   Groups:
@@ -42,11 +42,11 @@
   New messages:
   Old/read messages:
 
-->add_group(1, "Gamers")
-  10:  ERROR
+->add_group(1,"Gamers")
+  10:  ERROR 
   ID already in use.
 
-->add_group(2, "gamers 340")
+->add_group(2,"gamers 340")
   11:  OK
   Users:
   Groups:
@@ -62,35 +62,35 @@
   1->Doctors
   2->gamers 340
 
-->add_user(1, "")
-  13:  ERROR
+->add_user(1,"")
+  13:  ERROR 
   User name must start with a letter.
 
-->add_user(0, "aaa")
-  14:  ERROR
+->add_user(0,"aaa")
+  14:  ERROR 
   ID must be a positive integer.
 
-->add_user(1, " ")
-  15:  ERROR
+->add_user(1," ")
+  15:  ERROR 
   User name must start with a letter.
 
-->add_user(0, " ")
-  16:  ERROR
+->add_user(0," ")
+  16:  ERROR 
   ID must be a positive integer.
 
-->add_user(0, "")
-  17:  ERROR
+->add_user(0,"")
+  17:  ERROR 
   ID must be a positive integer.
 
-->add_user(1, "8905")
-  18:  ERROR
+->add_user(1,"8905")
+  18:  ERROR 
   User name must start with a letter.
 
-->add_user(1, " monica")
-  19:  ERROR
+->add_user(1," monica")
+  19:  ERROR 
   User name must start with a letter.
 
-->add_user(1, "Bhumika")
+->add_user(1,"Bhumika")
   20:  OK
   Users:
       1->Bhumika
@@ -102,11 +102,11 @@
   New messages:
   Old/read messages:
 
-->add_user(1, "Darren")
-  21:  ERROR
+->add_user(1,"Darren")
+  21:  ERROR 
   ID already in use.
 
-->add_user(2, "Darren Bergman")
+->add_user(2,"Darren Bergman")
   22:  OK
   Users:
       1->Bhumika
@@ -119,7 +119,7 @@
   New messages:
   Old/read messages:
 
-->add_user(3, "Parastoo B")
+->add_user(3,"Parastoo B")
   23:  OK
   Users:
       1->Bhumika
@@ -133,11 +133,11 @@
   New messages:
   Old/read messages:
 
-->add_user(3, "Sabiha")
-  24:  ERROR
+->add_user(3,"Sabiha")
+  24:  ERROR 
   ID already in use.
 
-->add_user(4, "Sabiha")
+->add_user(4,"Sabiha")
   25:  OK
   Users:
       1->Bhumika
@@ -165,27 +165,27 @@
   2->gamers 340
 
 ->register_user(0,0)
-  28:  ERROR
+  28:  ERROR 
   ID must be a positive integer.
 
 ->register_user(1,0)
-  29:  ERROR
+  29:  ERROR 
   ID must be a positive integer.
 
 ->register_user(5,10)
-  30:  ERROR
+  30:  ERROR 
   User with this ID does not exist.
 
 ->register_user(0,5)
-  31:  ERROR
+  31:  ERROR 
   ID must be a positive integer.
 
 ->register_user(0,1)
-  32:  ERROR
+  32:  ERROR 
   ID must be a positive integer.
 
 ->register_user(1,5)
-  33:  ERROR
+  33:  ERROR 
   Group with this ID does not exist.
 
 ->register_user(1,1)
@@ -239,7 +239,7 @@
   Old/read messages:
 
 ->register_user(2,1)
-  37:  ERROR
+  37:  ERROR 
   This registration already exists.
 
 ->register_user(1,2)
@@ -297,7 +297,7 @@
   Old/read messages:
 
 ->list_new_messages(0)
-  41:  ERROR
+  41:  ERROR 
   ID must be a positive integer.
 
 ->list_new_messages(1)
@@ -305,39 +305,39 @@
   There are no new messages for this user.
 
 ->list_new_messages(15)
-  43:  ERROR
+  43:  ERROR 
   User with this ID does not exist.
 
 ->send_message(0,1,"first message")
-  44:  ERROR
+  44:  ERROR 
   ID must be a positive integer.
 
 ->send_message(1,0,"second")
-  45:  ERROR
+  45:  ERROR 
   ID must be a positive integer.
 
 ->send_message(0,1,"")
-  46:  ERROR
+  46:  ERROR 
   ID must be a positive integer.
 
 ->send_message(1,1,"")
-  47:  ERROR
+  47:  ERROR 
   A message may not be an empty string.
 
 ->send_message(5,6,"send")
-  48:  ERROR
+  48:  ERROR 
   User with this ID does not exist.
 
 ->send_message(5,1,"send")
-  49:  ERROR
+  49:  ERROR 
   User with this ID does not exist.
 
 ->send_message(1,5,"send")
-  50:  ERROR
+  50:  ERROR 
   Group with this ID does not exist.
 
 ->send_message(4,2,"send")
-  51:  ERROR
+  51:  ERROR 
   User not authorized to send messages to the specified group.
 
 ->send_message(1,1,"This can not be happening for real, like really?")
@@ -415,18 +415,18 @@
 ->list_new_messages(3)
   55:  OK
   New/unread messages for user [3, Parastoo B]:
-     1->This can not be ...
-     2->OMG
+      1->This can not be ...
+      2->OMG
 
 ->list_new_messages(2)
   56:  OK
   New/unread messages for user [2, Darren Bergman]:
-     1->This can not be ...
-     2->OMG
-     3->Gamers reunited ...
+      1->This can not be ...
+      2->OMG
+      3->Gamers reunited ...
 
 ->list_old_messages(0)
-  57:  ERROR
+  57:  ERROR 
   ID must be a positive integer.
 
 ->list_old_messages(1)
@@ -434,11 +434,11 @@
   There are no old messages for this user.
 
 ->list_old_messages(15)
-  59:  ERROR
+  59:  ERROR 
   User with this ID does not exist.
 
 ->set_message_preview(0)
-  60:  ERROR
+  60:  ERROR 
   Message length must be greater than zero.
 
 ->set_message_preview(5)
@@ -469,9 +469,9 @@
 ->list_new_messages(2)
   62:  OK
   New/unread messages for user [2, Darren Bergman]:
-     1->This  ...
-     2->OMG
-     3->Gamer ...
+      1->This  ...
+      2->OMG
+      3->Gamer ...
 
 ->list_groups
   63:  OK
@@ -486,31 +486,31 @@
   4->Sabiha
 
 ->read_message(0,1)
-  65:  ERROR
+  65:  ERROR 
   ID must be a positive integer.
 
 ->read_message(1,0)
-  66:  ERROR
+  66:  ERROR 
   ID must be a positive integer.
 
 ->read_message(1,5)
-  67:  ERROR
+  67:  ERROR 
   Message with this ID does not exist.
 
 ->read_message(0,5)
-  68:  ERROR
+  68:  ERROR 
   ID must be a positive integer.
 
 ->read_message(5,5)
-  69:  ERROR
+  69:  ERROR 
   User with this ID does not exist.
 
 ->read_message(3,3)
-  70:  ERROR
+  70:  ERROR 
   User not authorized to access this message.
 
 ->read_message(1,3)
-  71:  ERROR
+  71:  ERROR 
   User not authorized to access this message.
 
 ->read_message(2,3)
@@ -541,7 +541,7 @@
       [2, Darren Bergman]->{3}
 
 ->read_message(2,3)
-  73:  ERROR
+  73:  ERROR 
   Message has already been read. See `list_old_messages'.
 
 ->read_message(2,1)
@@ -598,19 +598,19 @@
       [2, Darren Bergman]->{1, 2, 3}
 
 ->delete_message(0,0)
-  76:  ERROR
+  76:  ERROR 
   ID must be a positive integer.
 
 ->delete_message(5,0)
-  77:  ERROR
+  77:  ERROR 
   ID must be a positive integer.
 
 ->delete_message(0,5)
-  78:  ERROR
+  78:  ERROR 
   ID must be a positive integer.
 
 ->delete_message(5,5)
-  79:  ERROR
+  79:  ERROR 
   User with this ID does not exist.
 
 ->read_message(4,1)
@@ -692,11 +692,11 @@
       [4, Sabiha]->{2}
 
 ->delete_message(4,1)
-  83:  ERROR
+  83:  ERROR 
   Message with this ID not found in old/read messages.
 
 ->delete_message(4,3)
-  84:  ERROR
+  84:  ERROR 
   Message with this ID not found in old/read messages.
 
 ->delete_message(4,2)
