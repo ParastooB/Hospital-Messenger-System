@@ -1,0 +1,8 @@
+list_users
+list_groups
+add_user(2,"Ben")
+add_user(1,"Ben")
+add_group(3,"Doctors")
+add_group(1,"Doctors")
+list_groups
+list_users
