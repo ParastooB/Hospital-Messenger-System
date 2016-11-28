@@ -208,11 +208,9 @@ public class Messages {
 			for(int i = 0; i<list.size() ; i++){
 				if(allms.get(list.get(i)).length() < preview) {
 					System.out.println("      " + list.get(i) + "->"  + allms.get(list.get(i)).replaceAll("\\p{C}", ""));
-					//System.out.println("      " + list.get(i) + "->"  + allms.get(list.get(i)));
 				}
 				else{
 					System.out.println("      " + list.get(i) + "->"  + allms.get(list.get(i)).substring(0 , preview).replaceAll("\\p{C}", "") +" ...");
-					//System.out.println("      " + list.get(i) + "->"  + allms.get(list.get(i)).substring(0 , preview) +" ...");
 				}
 			}
 			
@@ -243,17 +241,14 @@ public class Messages {
 			for(int i = 0; i<list.size() ; i++){
 				if(allms.get(list.get(i)).length() < preview) {
 					System.out.println("      " + list.get(i) + "->"  + allms.get(list.get(i)).replaceAll("\\p{C}", ""));
-					//System.out.println("      " + list.get(i) + "->"  + allms.get(list.get(i)));
 				}
 				else{
 					System.out.println("      " + list.get(i) + "->"  + allms.get(list.get(i)).substring(0 , preview).replaceAll("\\p{C}", "") +" ...");
-					//System.out.println("      " + list.get(i) + "->"  + allms.get(list.get(i)).substring(0 , preview) +" ...");
 				}
 			}
 			
 		}
 	}
-	
 	void print_all_messages(int preview){ //allms
 		Map<Integer, String> map = new TreeMap<Integer, String>(allms);
 		Set<Entry<Integer, String>> u_set = map.entrySet();
@@ -268,7 +263,6 @@ public class Messages {
 			}
 		}
 	}
-	
 	
 	void print_new_messages(){ //newms
 		print_new_or_old_messages(newms);

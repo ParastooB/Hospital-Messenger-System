@@ -1,4 +1,5 @@
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -13,7 +14,7 @@ import java.util.TreeMap;
 public class Users {
 
 	HashMap<Integer, String> users = new HashMap<Integer,String>();
-	HashMap<String, Integer> users_by_name = new HashMap<String ,Integer>();
+	//HashMap<String, Integer> users_by_name = new HashMap<String ,Integer>();
 	public Users(){
 		
 	}
@@ -23,7 +24,7 @@ public class Users {
 		if(u_id > 0 && !user_id_exists(u_id) &&  !u_name.substring(0,1).matches("\\s") && !u_name.substring(0,1).matches("\\d") ){
 			System.out.println("  "+count+ ":  OK");
 			users.put(u_id, u_name);
-			users_by_name.put(u_name, u_id);
+		//	users_by_name.put(u_name, u_id);
 			return true;
 		}
 		else if(u_id <= 0){
@@ -44,16 +45,7 @@ public class Users {
 		}
 	}
 	
-	void list_users(int count){
-		if(users.isEmpty()){
-			System.out.println("  " + count+ ":  OK");
-			System.out.println("  There are no users registered in the system yet.");
-		}
-		else{
-			System.out.println("  " + count+ ":  OK");
-			list();
-			
-		}
+	/*
 	}
 	
 	void list(){
@@ -64,7 +56,31 @@ public class Users {
 			Map.Entry<String , Integer> token = i.next();
 			System.out.print("  " + token.getValue() + "->" + token.getKey() +"\n");
 	}
+	}*/
+	
+	void list_users(int count){
+		if(users.isEmpty()){
+			System.out.println("  " + count+ ":  OK");
+			System.out.println("  There are no users registered in the system yet.");
+		}
+		else{
+			System.out.println("  " + count+ ":  OK");
+			print();
+			
+		}
 	}
+	
+	void print(){
+		  Map<Integer, String> map = Sortbyvalues.sortByValues(users); 
+	      Set<Entry<Integer, String>> set2 = map.entrySet();
+	      Iterator<Entry<Integer, String>> iterator2 = set2.iterator();
+	      while(iterator2.hasNext()) {
+	           Map.Entry me2 = iterator2.next();
+	           System.out.print("  " + me2.getKey() + "->" + me2.getValue() +"\n");
+	      }
+	}
+	  
+
 	
 	//returns true if id is already in the map
 	boolean user_id_exists(int u_id){ 
@@ -81,7 +97,7 @@ public class Users {
 		Set<Entry<Integer, String>> u_set = map.entrySet();
 		Iterator<Entry<Integer, String>> i = u_set.iterator();
 		while(i.hasNext()){
-			Map.Entry<Integer, String> token = (Map.Entry<Integer, String>)i.next();
+			Map.Entry<Integer, String> token = i.next();
 			System.out.print("      " + token.getKey() + "->" + token.getValue() +"\n");
 		}
 	}

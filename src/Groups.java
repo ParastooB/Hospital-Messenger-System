@@ -12,7 +12,7 @@ import java.util.Map.Entry;
 
 public class Groups {
 	HashMap<Integer, String> groups = new HashMap<Integer,String>();
-	HashMap<String, Integer> groups_by_name = new HashMap<String ,Integer>();
+	//HashMap<String, Integer> groups_by_name = new HashMap<String ,Integer>();
 	public Groups(){
 		
 	}
@@ -22,7 +22,7 @@ public class Groups {
 		if(g_id > 0 && !group_id_exists(g_id) && !g_name.substring(0,1).matches("\\s") && !g_name.substring(0,1).matches("\\d")) {
 			System.out.println("  "+count+ ":  OK");
 			groups.put(g_id, g_name);
-			groups_by_name.put(g_name , g_id);
+		//	groups_by_name.put(g_name , g_id);
 			return true;
 		}
 		else if(g_id <= 0){
@@ -42,18 +42,7 @@ public class Groups {
 		
 		}
 	}
-	
-	void list_groups(int count){
-		if(groups.isEmpty()){
-			System.out.println("  " + count+ ":  OK");
-			System.out.println("  There are no groups registered in the system yet.");
-		}
-		else{
-			System.out.println("  " + count+ ":  OK");
-			list();
-			
-			}
-		}
+	/*
 	
 	void list(){
 		Map<String , Integer> map = new TreeMap<String , Integer>(groups_by_name);
@@ -63,7 +52,28 @@ public class Groups {
 			Map.Entry<String , Integer> token = i.next();
 			System.out.print("  " + token.getValue() + "->" + token.getKey() +"\n");
 	}
+	}*/
+	void list_groups(int count){
+		if(groups.isEmpty()){
+			System.out.println("  " + count+ ":  OK");
+			System.out.println("  There are no groups registered in the system yet.");
+		}
+		else{
+			System.out.println("  " + count+ ":  OK");
+			print();			
+			}
+		}
+	
+	void print(){
+		  Map<Integer, String> map = Sortbyvalues.sortByValues(groups); 
+	      Set<Entry<Integer, String>> set2 = map.entrySet();
+	      Iterator<Entry<Integer, String>> iterator2 = set2.iterator();
+	      while(iterator2.hasNext()) {
+	           Map.Entry me2 = (Map.Entry)iterator2.next();
+	           System.out.print("  " + me2.getKey() + "->" + me2.getValue() +"\n");
+	      }
 	}
+
 	//returns true if id is already in the map
 	boolean group_id_exists(int u_id){ 
 		if(groups.containsKey(u_id)){
