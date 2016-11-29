@@ -45,6 +45,7 @@ public class Commands {
 
 	void read_message(int u_id, int m_id, int count) {
 		if (m.read_message(u_id, m_id, count) == true) {
+			
 			print_all();
 		} else {
 
@@ -55,7 +56,6 @@ public class Commands {
 		if (m.delete_message(u_id, m_id, count) == true) {
 			print_all();
 		} else {
-
 		}
 	}
 
@@ -100,6 +100,7 @@ public class Commands {
 		m.print_new_messages();
 		System.out.println("  Old/read messages:");
 		m.print_old_messages();
+		//m.print_all_old_and_new();
 	}
 
 }
