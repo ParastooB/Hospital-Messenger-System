@@ -1,3 +1,4 @@
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -12,6 +13,7 @@ public class Messages {
 	HashMap<Integer,String> allms = new HashMap<Integer , String>();
 	HashMap<Integer, ArrayList<Integer>> newms = new HashMap<Integer, ArrayList<Integer>>();
 	HashMap<Integer, ArrayList<Integer>> oldms = new HashMap<Integer, ArrayList<Integer>>();
+	HashMap<Integer, ArrayList<Integer>> sender = new HashMap<Integer, ArrayList<Integer>>(); //map sender with message id 
 	Registrations r;
 	Users u;
 	Groups g;
@@ -51,6 +53,7 @@ public class Messages {
 		else{
 			System.out.println("  " +count + ":  OK");
 			allms.put(m_id, text);
+			edit_sender(u_id , m_id);
 			distribute_messages(u_id , g_id , m_id);
 			m_id++;
 			return true;
@@ -92,6 +95,22 @@ public class Messages {
 			return true;
 		}
 	}
+	
+	
+	void edit_sender(int u_id , int m_id){
+		if(sender.containsKey(u_id)){
+			ArrayList<Integer> list = sender.get(u_id);
+			list.add(m_id);
+			Collections.sort(list);
+			sender.put(u_id, list);
+		}
+		else{//first timers
+			ArrayList<Integer> list = new ArrayList<Integer>();
+			list.add(m_id);
+			sender.put(u_id, list);
+		}
+	}
+	
 	
 	
 	void edit_oldms(int u_id , int m_id){
@@ -162,7 +181,7 @@ public class Messages {
 			System.out.println("  Message with this ID does not exist.");
 			return  false;
 		}
-		else if(u_id > 0 && m_id > 0 && u.user_id_exists(u_id) && message_exists(m_id) && !message_already_read(u_id , m_id)){
+		else if(u_id > 0 && m_id > 0 && u.user_id_exists(u_id) && message_exists(m_id) && !already_read(u_id , m_id)){
 			System.out.println("  " +count + ":  ERROR ");
 			System.out.println("  Message with this ID not found in old/read messages.");
 			return false;
@@ -174,6 +193,19 @@ public class Messages {
 		}
 	}
 	
+	boolean already_read(int u_id , int m_id){ //FOR DELETE MESSAGES 	
+		if(oldms.containsKey(u_id)){
+			if(oldms.get(u_id).contains(m_id)){
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+		else{
+			return false;
+		}
+	}
 	void delete_oldms(int u_id , int m_id){ //remove id from list
 		if(oldms.containsKey(u_id)){
 			ArrayList<Integer> list = oldms.get(u_id);
@@ -298,44 +330,34 @@ public class Messages {
 	//returns true if new messages exists for user
 	boolean new_messages(int u_id){//newms
 		if(newms.containsKey(u_id)){
-			return true;
+			if(newms.get(u_id).isEmpty()){
+				return false;
+			}
+			else{
+				return true;
+			}
 		}else{
 			return false;
 		}
 	}
 	
-	boolean oldms_messages(int u_id){//newms
+	//returns true of old messages exists for user 
+	boolean oldms_messages(int u_id){//oldms
 		if(oldms.containsKey(u_id)){
-			return true;
+			if(oldms.get(u_id).isEmpty()){
+				return false;
+			}
+			else{
+				return true;
+			}
 		}else{
 			return false;
 		}
 	}
 	//message access - returns true if user have access to the message
 	boolean access_message(int u_id , int m_id){
-		if(newms.containsKey(u_id)){
-			if(newms.get(u_id).contains(m_id)){
-				return true;
-			}
-			else if(oldms.containsKey(u_id)){
-				if(oldms.get(u_id).contains(m_id)){
-					return true;
-				}
-				else{
-					return false;
-				}
-			}
-			else{
-				return false;
-			}
-		}
-		else if(!newms.containsKey(u_id) && oldms.containsKey(u_id)){
-			if(oldms.get(u_id).contains(m_id)){
-				return true;
-			}
-			else{
-				return false;
-			}
+		if((newms.containsKey(u_id) && newms.get(u_id).contains(m_id) ) || (oldms.containsKey(u_id) && oldms.get(u_id).contains(m_id)) || (sender.containsKey(u_id) && sender.get(u_id).contains(m_id))){
+			return true;
 		}
 		else{
 			return false;
@@ -344,13 +366,8 @@ public class Messages {
 	
 	//returns true if message is already read 
 	boolean message_already_read(int u_id , int m_id){
-		if(oldms.containsKey(u_id)){
-			if(oldms.get(u_id).contains(m_id)){
-				return true;
-			}
-			else{
-				return false;
-			}
+		if((oldms.containsKey(u_id) && oldms.get(u_id).contains(m_id)) || (sender.containsKey(u_id) && sender.get(u_id).contains(m_id))){
+			return true;
 		}
 		else{
 			return false;
@@ -359,12 +376,5 @@ public class Messages {
 	
 	String get_message(int m_id){
 		return allms.get(m_id);
-	}
-	void check_message_list(HashMap<Integer , ArrayList<Integer>> map , int u_id){
-		if(map.containsKey(u_id)){
-			if(map.get(u_id).isEmpty()){ //empty messages
-				map.remove(u_id);
-			}
-		}
 	}
 }

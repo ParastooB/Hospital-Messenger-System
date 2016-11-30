@@ -59,7 +59,7 @@ list_old_messages(1)
 list_old_messages(15)
 set_message_preview(0)
 set_message_preview(5)
-list_new_messaged(2)
+list_new_message(2)
 list_groups
 list_users
 read_message(0,1)
