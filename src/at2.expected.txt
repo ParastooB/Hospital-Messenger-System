@@ -1,0 +1,314 @@
+  0:  OK
+
+->add_user(1,"Bhumika")
+  1:  OK
+  Users:
+      1->Bhumika
+  Groups:
+  Registrations:
+  All messages:
+  New messages:
+  Old/read messages:
+
+->add_user(2,"Darren")
+  2:  OK
+  Users:
+      1->Bhumika
+      2->Darren
+  Groups:
+  Registrations:
+  All messages:
+  New messages:
+  Old/read messages:
+
+->add_user(3,"Parastoo")
+  3:  OK
+  Users:
+      1->Bhumika
+      2->Darren
+      3->Parastoo
+  Groups:
+  Registrations:
+  All messages:
+  New messages:
+  Old/read messages:
+
+->add_user(4,"Sabiha")
+  4:  OK
+  Users:
+      1->Bhumika
+      2->Darren
+      3->Parastoo
+      4->Sabiha
+  Groups:
+  Registrations:
+  All messages:
+  New messages:
+  Old/read messages:
+
+->add_group(1,"Doctors")
+  5:  OK
+  Users:
+      1->Bhumika
+      2->Darren
+      3->Parastoo
+      4->Sabiha
+  Groups:
+      1->Doctors
+  Registrations:
+  All messages:
+  New messages:
+  Old/read messages:
+
+->add_group(2,"gamers 340")
+  6:  OK
+  Users:
+      1->Bhumika
+      2->Darren
+      3->Parastoo
+      4->Sabiha
+  Groups:
+      1->Doctors
+      2->gamers 340
+  Registrations:
+  All messages:
+  New messages:
+  Old/read messages:
+
+->register_user(1,1)
+  7:  OK
+  Users:
+      1->Bhumika
+      2->Darren
+      3->Parastoo
+      4->Sabiha
+  Groups:
+      1->Doctors
+      2->gamers 340
+  Registrations:
+      [1, Bhumika]->{1->Doctors}
+  All messages:
+  New messages:
+  Old/read messages:
+
+->register_user(2,2)
+  8:  OK
+  Users:
+      1->Bhumika
+      2->Darren
+      3->Parastoo
+      4->Sabiha
+  Groups:
+      1->Doctors
+      2->gamers 340
+  Registrations:
+      [1, Bhumika]->{1->Doctors}
+      [2, Darren]->{2->gamers 340}
+  All messages:
+  New messages:
+  Old/read messages:
+
+->register_user(2,1)
+  9:  OK
+  Users:
+      1->Bhumika
+      2->Darren
+      3->Parastoo
+      4->Sabiha
+  Groups:
+      1->Doctors
+      2->gamers 340
+  Registrations:
+      [1, Bhumika]->{1->Doctors}
+      [2, Darren]->{1->Doctors, 2->gamers 340}
+  All messages:
+  New messages:
+  Old/read messages:
+
+->register_user(1,2)
+  10:  OK
+  Users:
+      1->Bhumika
+      2->Darren
+      3->Parastoo
+      4->Sabiha
+  Groups:
+      1->Doctors
+      2->gamers 340
+  Registrations:
+      [1, Bhumika]->{1->Doctors, 2->gamers 340}
+      [2, Darren]->{1->Doctors, 2->gamers 340}
+  All messages:
+  New messages:
+  Old/read messages:
+
+->register_user(3,1)
+  11:  OK
+  Users:
+      1->Bhumika
+      2->Darren
+      3->Parastoo
+      4->Sabiha
+  Groups:
+      1->Doctors
+      2->gamers 340
+  Registrations:
+      [1, Bhumika]->{1->Doctors, 2->gamers 340}
+      [2, Darren]->{1->Doctors, 2->gamers 340}
+      [3, Parastoo]->{1->Doctors}
+  All messages:
+  New messages:
+  Old/read messages:
+
+->register_user(4,1)
+  12:  OK
+  Users:
+      1->Bhumika
+      2->Darren
+      3->Parastoo
+      4->Sabiha
+  Groups:
+      1->Doctors
+      2->gamers 340
+  Registrations:
+      [1, Bhumika]->{1->Doctors, 2->gamers 340}
+      [2, Darren]->{1->Doctors, 2->gamers 340}
+      [3, Parastoo]->{1->Doctors}
+      [4, Sabiha]->{1->Doctors}
+  All messages:
+  New messages:
+  Old/read messages:
+
+->send_message(1,1,"This can not be happening for real, like really?")
+  13:  OK
+  Users:
+      1->Bhumika
+      2->Darren
+      3->Parastoo
+      4->Sabiha
+  Groups:
+      1->Doctors
+      2->gamers 340
+  Registrations:
+      [1, Bhumika]->{1->Doctors, 2->gamers 340}
+      [2, Darren]->{1->Doctors, 2->gamers 340}
+      [3, Parastoo]->{1->Doctors}
+      [4, Sabiha]->{1->Doctors}
+  All messages:
+      1->This can not be ...
+  New messages:
+      [2, Darren]->{1}
+      [3, Parastoo]->{1}
+      [4, Sabiha]->{1}
+  Old/read messages:
+
+->send_message(1,1,"OMG")
+  14:  OK
+  Users:
+      1->Bhumika
+      2->Darren
+      3->Parastoo
+      4->Sabiha
+  Groups:
+      1->Doctors
+      2->gamers 340
+  Registrations:
+      [1, Bhumika]->{1->Doctors, 2->gamers 340}
+      [2, Darren]->{1->Doctors, 2->gamers 340}
+      [3, Parastoo]->{1->Doctors}
+      [4, Sabiha]->{1->Doctors}
+  All messages:
+      1->This can not be ...
+      2->OMG
+  New messages:
+      [2, Darren]->{1, 2}
+      [3, Parastoo]->{1, 2}
+      [4, Sabiha]->{1, 2}
+  Old/read messages:
+
+->send_message(1,2,"Gamers reunited FTW")
+  15:  OK
+  Users:
+      1->Bhumika
+      2->Darren
+      3->Parastoo
+      4->Sabiha
+  Groups:
+      1->Doctors
+      2->gamers 340
+  Registrations:
+      [1, Bhumika]->{1->Doctors, 2->gamers 340}
+      [2, Darren]->{1->Doctors, 2->gamers 340}
+      [3, Parastoo]->{1->Doctors}
+      [4, Sabiha]->{1->Doctors}
+  All messages:
+      1->This can not be ...
+      2->OMG
+      3->Gamers reunited ...
+  New messages:
+      [2, Darren]->{1, 2, 3}
+      [3, Parastoo]->{1, 2}
+      [4, Sabiha]->{1, 2}
+  Old/read messages:
+
+->read_message(1,3)
+  16:  ERROR 
+  Message has already been read. See `list_old_messages'.
+
+->read_message(2,3)
+  17:  OK
+  Message for user [2, Darren]: [3, "Gamers reunited FTW"]
+  Users:
+      1->Bhumika
+      2->Darren
+      3->Parastoo
+      4->Sabiha
+  Groups:
+      1->Doctors
+      2->gamers 340
+  Registrations:
+      [1, Bhumika]->{1->Doctors, 2->gamers 340}
+      [2, Darren]->{1->Doctors, 2->gamers 340}
+      [3, Parastoo]->{1->Doctors}
+      [4, Sabiha]->{1->Doctors}
+  All messages:
+      1->This can not be ...
+      2->OMG
+      3->Gamers reunited ...
+  New messages:
+      [2, Darren]->{1, 2}
+      [3, Parastoo]->{1, 2}
+      [4, Sabiha]->{1, 2}
+  Old/read messages:
+      [2, Darren]->{3}
+
+->read_message(2,2)
+  18:  OK
+  Message for user [2, Darren]: [2, "OMG"]
+  Users:
+      1->Bhumika
+      2->Darren
+      3->Parastoo
+      4->Sabiha
+  Groups:
+      1->Doctors
+      2->gamers 340
+  Registrations:
+      [1, Bhumika]->{1->Doctors, 2->gamers 340}
+      [2, Darren]->{1->Doctors, 2->gamers 340}
+      [3, Parastoo]->{1->Doctors}
+      [4, Sabiha]->{1->Doctors}
+  All messages:
+      1->This can not be ...
+      2->OMG
+      3->Gamers reunited ...
+  New messages:
+      [2, Darren]->{1}
+      [3, Parastoo]->{1, 2}
+      [4, Sabiha]->{1, 2}
+  Old/read messages:
+      [2, Darren]->{2, 3}
+
+->delete_message(1,3)
+  19:  ERROR 
+  Message with this ID not found in old/read messages.

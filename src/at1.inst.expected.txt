@@ -1,0 +1,1015 @@
+  0:  OK
+
+->list_groups
+  1:  OK
+  There are no groups registered in the system yet.
+
+->list_users
+  2:  OK
+  There are no users registered in the system yet.
+
+->add_user(0,"aaa")
+  3:  ERROR 
+  ID must be a positive integer.
+
+->add_user(1,"")
+  4:  ERROR 
+  User name must start with a letter.
+
+->add_user(1,"Dr. Dolittle")
+  5:  OK
+  Users:
+      1->Dr. Dolittle
+  Groups:
+  Registrations:
+  All messages:
+  New messages:
+  Old/read messages:
+
+->add_user(1,"Dr. Lecter")
+  6:  ERROR 
+  ID already in use.
+
+->add_user(2,"Dr. Frankenstein")
+  7:  OK
+  Users:
+      1->Dr. Dolittle
+      2->Dr. Frankenstein
+  Groups:
+  Registrations:
+  All messages:
+  New messages:
+  Old/read messages:
+
+->add_user(3,"Dr. Rieux")
+  8:  OK
+  Users:
+      1->Dr. Dolittle
+      2->Dr. Frankenstein
+      3->Dr. Rieux
+  Groups:
+  Registrations:
+  All messages:
+  New messages:
+  Old/read messages:
+
+->add_user(4,"Dr. Higgins")
+  9:  OK
+  Users:
+      1->Dr. Dolittle
+      2->Dr. Frankenstein
+      3->Dr. Rieux
+      4->Dr. Higgins
+  Groups:
+  Registrations:
+  All messages:
+  New messages:
+  Old/read messages:
+
+->add_user(5,"Florence Nightingale")
+  10:  OK
+  Users:
+      1->Dr. Dolittle
+      2->Dr. Frankenstein
+      3->Dr. Rieux
+      4->Dr. Higgins
+      5->Florence Nightingale
+  Groups:
+  Registrations:
+  All messages:
+  New messages:
+  Old/read messages:
+
+->add_user(6,"Mary Todd Lincoln")
+  11:  OK
+  Users:
+      1->Dr. Dolittle
+      2->Dr. Frankenstein
+      3->Dr. Rieux
+      4->Dr. Higgins
+      5->Florence Nightingale
+      6->Mary Todd Lincoln
+  Groups:
+  Registrations:
+  All messages:
+  New messages:
+  Old/read messages:
+
+->add_user(7,"Helen Fairchild")
+  12:  OK
+  Users:
+      1->Dr. Dolittle
+      2->Dr. Frankenstein
+      3->Dr. Rieux
+      4->Dr. Higgins
+      5->Florence Nightingale
+      6->Mary Todd Lincoln
+      7->Helen Fairchild
+  Groups:
+  Registrations:
+  All messages:
+  New messages:
+  Old/read messages:
+
+->add_user(8,"Office assistant")
+  13:  OK
+  Users:
+      1->Dr. Dolittle
+      2->Dr. Frankenstein
+      3->Dr. Rieux
+      4->Dr. Higgins
+      5->Florence Nightingale
+      6->Mary Todd Lincoln
+      7->Helen Fairchild
+      8->Office assistant
+  Groups:
+  Registrations:
+  All messages:
+  New messages:
+  Old/read messages:
+
+->add_group(0,"Doctors")
+  14:  ERROR 
+  ID must be a positive integer.
+
+->add_group(1,"Doctors")
+  15:  OK
+  Users:
+      1->Dr. Dolittle
+      2->Dr. Frankenstein
+      3->Dr. Rieux
+      4->Dr. Higgins
+      5->Florence Nightingale
+      6->Mary Todd Lincoln
+      7->Helen Fairchild
+      8->Office assistant
+  Groups:
+      1->Doctors
+  Registrations:
+  All messages:
+  New messages:
+  Old/read messages:
+
+->add_group(1,"Nurses")
+  16:  ERROR 
+  ID already in use.
+
+->add_group(2,"Nurses")
+  17:  OK
+  Users:
+      1->Dr. Dolittle
+      2->Dr. Frankenstein
+      3->Dr. Rieux
+      4->Dr. Higgins
+      5->Florence Nightingale
+      6->Mary Todd Lincoln
+      7->Helen Fairchild
+      8->Office assistant
+  Groups:
+      1->Doctors
+      2->Nurses
+  Registrations:
+  All messages:
+  New messages:
+  Old/read messages:
+
+->add_group(3,"Staff")
+  18:  OK
+  Users:
+      1->Dr. Dolittle
+      2->Dr. Frankenstein
+      3->Dr. Rieux
+      4->Dr. Higgins
+      5->Florence Nightingale
+      6->Mary Todd Lincoln
+      7->Helen Fairchild
+      8->Office assistant
+  Groups:
+      1->Doctors
+      2->Nurses
+      3->Staff
+  Registrations:
+  All messages:
+  New messages:
+  Old/read messages:
+
+->list_groups
+  19:  OK
+  1->Doctors
+  2->Nurses
+  3->Staff
+
+->register_user(0,1)
+  20:  ERROR 
+  ID must be a positive integer.
+
+->register_user(1,0)
+  21:  ERROR 
+  ID must be a positive integer.
+
+->register_user(1,1)
+  22:  OK
+  Users:
+      1->Dr. Dolittle
+      2->Dr. Frankenstein
+      3->Dr. Rieux
+      4->Dr. Higgins
+      5->Florence Nightingale
+      6->Mary Todd Lincoln
+      7->Helen Fairchild
+      8->Office assistant
+  Groups:
+      1->Doctors
+      2->Nurses
+      3->Staff
+  Registrations:
+      [1, Dr. Dolittle]->{1->Doctors}
+  All messages:
+  New messages:
+  Old/read messages:
+
+->register_user(1,1)
+  23:  ERROR 
+  This registration already exists.
+
+->register_user(5,3)
+  24:  OK
+  Users:
+      1->Dr. Dolittle
+      2->Dr. Frankenstein
+      3->Dr. Rieux
+      4->Dr. Higgins
+      5->Florence Nightingale
+      6->Mary Todd Lincoln
+      7->Helen Fairchild
+      8->Office assistant
+  Groups:
+      1->Doctors
+      2->Nurses
+      3->Staff
+  Registrations:
+      [1, Dr. Dolittle]->{1->Doctors}
+      [5, Florence Nightingale]->{3->Staff}
+  All messages:
+  New messages:
+  Old/read messages:
+
+->register_user(2,1)
+  25:  OK
+  Users:
+      1->Dr. Dolittle
+      2->Dr. Frankenstein
+      3->Dr. Rieux
+      4->Dr. Higgins
+      5->Florence Nightingale
+      6->Mary Todd Lincoln
+      7->Helen Fairchild
+      8->Office assistant
+  Groups:
+      1->Doctors
+      2->Nurses
+      3->Staff
+  Registrations:
+      [1, Dr. Dolittle]->{1->Doctors}
+      [2, Dr. Frankenstein]->{1->Doctors}
+      [5, Florence Nightingale]->{3->Staff}
+  All messages:
+  New messages:
+  Old/read messages:
+
+->register_user(3,1)
+  26:  OK
+  Users:
+      1->Dr. Dolittle
+      2->Dr. Frankenstein
+      3->Dr. Rieux
+      4->Dr. Higgins
+      5->Florence Nightingale
+      6->Mary Todd Lincoln
+      7->Helen Fairchild
+      8->Office assistant
+  Groups:
+      1->Doctors
+      2->Nurses
+      3->Staff
+  Registrations:
+      [1, Dr. Dolittle]->{1->Doctors}
+      [2, Dr. Frankenstein]->{1->Doctors}
+      [3, Dr. Rieux]->{1->Doctors}
+      [5, Florence Nightingale]->{3->Staff}
+  All messages:
+  New messages:
+  Old/read messages:
+
+->register_user(4,2)
+  27:  OK
+  Users:
+      1->Dr. Dolittle
+      2->Dr. Frankenstein
+      3->Dr. Rieux
+      4->Dr. Higgins
+      5->Florence Nightingale
+      6->Mary Todd Lincoln
+      7->Helen Fairchild
+      8->Office assistant
+  Groups:
+      1->Doctors
+      2->Nurses
+      3->Staff
+  Registrations:
+      [1, Dr. Dolittle]->{1->Doctors}
+      [2, Dr. Frankenstein]->{1->Doctors}
+      [3, Dr. Rieux]->{1->Doctors}
+      [4, Dr. Higgins]->{2->Nurses}
+      [5, Florence Nightingale]->{3->Staff}
+  All messages:
+  New messages:
+  Old/read messages:
+
+->register_user(5,2)
+  28:  OK
+  Users:
+      1->Dr. Dolittle
+      2->Dr. Frankenstein
+      3->Dr. Rieux
+      4->Dr. Higgins
+      5->Florence Nightingale
+      6->Mary Todd Lincoln
+      7->Helen Fairchild
+      8->Office assistant
+  Groups:
+      1->Doctors
+      2->Nurses
+      3->Staff
+  Registrations:
+      [1, Dr. Dolittle]->{1->Doctors}
+      [2, Dr. Frankenstein]->{1->Doctors}
+      [3, Dr. Rieux]->{1->Doctors}
+      [4, Dr. Higgins]->{2->Nurses}
+      [5, Florence Nightingale]->{2->Nurses, 3->Staff}
+  All messages:
+  New messages:
+  Old/read messages:
+
+->register_user(7,2)
+  29:  OK
+  Users:
+      1->Dr. Dolittle
+      2->Dr. Frankenstein
+      3->Dr. Rieux
+      4->Dr. Higgins
+      5->Florence Nightingale
+      6->Mary Todd Lincoln
+      7->Helen Fairchild
+      8->Office assistant
+  Groups:
+      1->Doctors
+      2->Nurses
+      3->Staff
+  Registrations:
+      [1, Dr. Dolittle]->{1->Doctors}
+      [2, Dr. Frankenstein]->{1->Doctors}
+      [3, Dr. Rieux]->{1->Doctors}
+      [4, Dr. Higgins]->{2->Nurses}
+      [5, Florence Nightingale]->{2->Nurses, 3->Staff}
+      [7, Helen Fairchild]->{2->Nurses}
+  All messages:
+  New messages:
+  Old/read messages:
+
+->register_user(7,3)
+  30:  OK
+  Users:
+      1->Dr. Dolittle
+      2->Dr. Frankenstein
+      3->Dr. Rieux
+      4->Dr. Higgins
+      5->Florence Nightingale
+      6->Mary Todd Lincoln
+      7->Helen Fairchild
+      8->Office assistant
+  Groups:
+      1->Doctors
+      2->Nurses
+      3->Staff
+  Registrations:
+      [1, Dr. Dolittle]->{1->Doctors}
+      [2, Dr. Frankenstein]->{1->Doctors}
+      [3, Dr. Rieux]->{1->Doctors}
+      [4, Dr. Higgins]->{2->Nurses}
+      [5, Florence Nightingale]->{2->Nurses, 3->Staff}
+      [7, Helen Fairchild]->{2->Nurses, 3->Staff}
+  All messages:
+  New messages:
+  Old/read messages:
+
+->register_user(8,3)
+  31:  OK
+  Users:
+      1->Dr. Dolittle
+      2->Dr. Frankenstein
+      3->Dr. Rieux
+      4->Dr. Higgins
+      5->Florence Nightingale
+      6->Mary Todd Lincoln
+      7->Helen Fairchild
+      8->Office assistant
+  Groups:
+      1->Doctors
+      2->Nurses
+      3->Staff
+  Registrations:
+      [1, Dr. Dolittle]->{1->Doctors}
+      [2, Dr. Frankenstein]->{1->Doctors}
+      [3, Dr. Rieux]->{1->Doctors}
+      [4, Dr. Higgins]->{2->Nurses}
+      [5, Florence Nightingale]->{2->Nurses, 3->Staff}
+      [7, Helen Fairchild]->{2->Nurses, 3->Staff}
+      [8, Office assistant]->{3->Staff}
+  All messages:
+  New messages:
+  Old/read messages:
+
+->register_user(4,3)
+  32:  OK
+  Users:
+      1->Dr. Dolittle
+      2->Dr. Frankenstein
+      3->Dr. Rieux
+      4->Dr. Higgins
+      5->Florence Nightingale
+      6->Mary Todd Lincoln
+      7->Helen Fairchild
+      8->Office assistant
+  Groups:
+      1->Doctors
+      2->Nurses
+      3->Staff
+  Registrations:
+      [1, Dr. Dolittle]->{1->Doctors}
+      [2, Dr. Frankenstein]->{1->Doctors}
+      [3, Dr. Rieux]->{1->Doctors}
+      [4, Dr. Higgins]->{2->Nurses, 3->Staff}
+      [5, Florence Nightingale]->{2->Nurses, 3->Staff}
+      [7, Helen Fairchild]->{2->Nurses, 3->Staff}
+      [8, Office assistant]->{3->Staff}
+  All messages:
+  New messages:
+  Old/read messages:
+
+->register_user(2,3)
+  33:  OK
+  Users:
+      1->Dr. Dolittle
+      2->Dr. Frankenstein
+      3->Dr. Rieux
+      4->Dr. Higgins
+      5->Florence Nightingale
+      6->Mary Todd Lincoln
+      7->Helen Fairchild
+      8->Office assistant
+  Groups:
+      1->Doctors
+      2->Nurses
+      3->Staff
+  Registrations:
+      [1, Dr. Dolittle]->{1->Doctors}
+      [2, Dr. Frankenstein]->{1->Doctors, 3->Staff}
+      [3, Dr. Rieux]->{1->Doctors}
+      [4, Dr. Higgins]->{2->Nurses, 3->Staff}
+      [5, Florence Nightingale]->{2->Nurses, 3->Staff}
+      [7, Helen Fairchild]->{2->Nurses, 3->Staff}
+      [8, Office assistant]->{3->Staff}
+  All messages:
+  New messages:
+  Old/read messages:
+
+->list_new_messages(1)
+  34:  OK
+  There are no new messages for this user.
+
+->list_old_messages(1)
+  35:  OK
+  There are no old messages for this user.
+
+->register_user(10,2)
+  36:  ERROR 
+  User with this ID does not exist.
+
+->send_message(0,1,"first message")
+  37:  ERROR 
+  ID must be a positive integer.
+
+->send_message(1,0,"first message")
+  38:  ERROR 
+  ID must be a positive integer.
+
+->send_message(1,1,"")
+  39:  ERROR 
+  A message may not be an empty string.
+
+->send_message(1,1,"Fellows, should we take this patient in? As a cardiologist, I don't have the heart to say no.")
+  40:  OK
+  Users:
+      1->Dr. Dolittle
+      2->Dr. Frankenstein
+      3->Dr. Rieux
+      4->Dr. Higgins
+      5->Florence Nightingale
+      6->Mary Todd Lincoln
+      7->Helen Fairchild
+      8->Office assistant
+  Groups:
+      1->Doctors
+      2->Nurses
+      3->Staff
+  Registrations:
+      [1, Dr. Dolittle]->{1->Doctors}
+      [2, Dr. Frankenstein]->{1->Doctors, 3->Staff}
+      [3, Dr. Rieux]->{1->Doctors}
+      [4, Dr. Higgins]->{2->Nurses, 3->Staff}
+      [5, Florence Nightingale]->{2->Nurses, 3->Staff}
+      [7, Helen Fairchild]->{2->Nurses, 3->Staff}
+      [8, Office assistant]->{3->Staff}
+  All messages:
+      1->Fellows, should ...
+  New messages:
+      [2, Dr. Frankenstein]->{1}
+      [3, Dr. Rieux]->{1}
+  Old/read messages:
+
+->send_message(3,1,"Being a surgeon, I choose to wash my hands of the whole thing. ")
+  41:  OK
+  Users:
+      1->Dr. Dolittle
+      2->Dr. Frankenstein
+      3->Dr. Rieux
+      4->Dr. Higgins
+      5->Florence Nightingale
+      6->Mary Todd Lincoln
+      7->Helen Fairchild
+      8->Office assistant
+  Groups:
+      1->Doctors
+      2->Nurses
+      3->Staff
+  Registrations:
+      [1, Dr. Dolittle]->{1->Doctors}
+      [2, Dr. Frankenstein]->{1->Doctors, 3->Staff}
+      [3, Dr. Rieux]->{1->Doctors}
+      [4, Dr. Higgins]->{2->Nurses, 3->Staff}
+      [5, Florence Nightingale]->{2->Nurses, 3->Staff}
+      [7, Helen Fairchild]->{2->Nurses, 3->Staff}
+      [8, Office assistant]->{3->Staff}
+  All messages:
+      1->Fellows, should ...
+      2->Being a surgeon ...
+  New messages:
+      [1, Dr. Dolittle]->{2}
+      [2, Dr. Frankenstein]->{1, 2}
+      [3, Dr. Rieux]->{1}
+  Old/read messages:
+
+->send_message(2,1,"Let's run the idea by our radiology team. They should be able to see right through it.")
+  42:  OK
+  Users:
+      1->Dr. Dolittle
+      2->Dr. Frankenstein
+      3->Dr. Rieux
+      4->Dr. Higgins
+      5->Florence Nightingale
+      6->Mary Todd Lincoln
+      7->Helen Fairchild
+      8->Office assistant
+  Groups:
+      1->Doctors
+      2->Nurses
+      3->Staff
+  Registrations:
+      [1, Dr. Dolittle]->{1->Doctors}
+      [2, Dr. Frankenstein]->{1->Doctors, 3->Staff}
+      [3, Dr. Rieux]->{1->Doctors}
+      [4, Dr. Higgins]->{2->Nurses, 3->Staff}
+      [5, Florence Nightingale]->{2->Nurses, 3->Staff}
+      [7, Helen Fairchild]->{2->Nurses, 3->Staff}
+      [8, Office assistant]->{3->Staff}
+  All messages:
+      1->Fellows, should ...
+      2->Being a surgeon ...
+      3->Let's run the i ...
+  New messages:
+      [1, Dr. Dolittle]->{2, 3}
+      [2, Dr. Frankenstein]->{1, 2}
+      [3, Dr. Rieux]->{1, 3}
+  Old/read messages:
+
+->send_message(4,1,"test")
+  43:  ERROR 
+  User not authorized to send messages to the specified group.
+
+->send_message(8,3,"Isn't it a bit unnerving that doctors call what they do 'practice'?")
+  44:  OK
+  Users:
+      1->Dr. Dolittle
+      2->Dr. Frankenstein
+      3->Dr. Rieux
+      4->Dr. Higgins
+      5->Florence Nightingale
+      6->Mary Todd Lincoln
+      7->Helen Fairchild
+      8->Office assistant
+  Groups:
+      1->Doctors
+      2->Nurses
+      3->Staff
+  Registrations:
+      [1, Dr. Dolittle]->{1->Doctors}
+      [2, Dr. Frankenstein]->{1->Doctors, 3->Staff}
+      [3, Dr. Rieux]->{1->Doctors}
+      [4, Dr. Higgins]->{2->Nurses, 3->Staff}
+      [5, Florence Nightingale]->{2->Nurses, 3->Staff}
+      [7, Helen Fairchild]->{2->Nurses, 3->Staff}
+      [8, Office assistant]->{3->Staff}
+  All messages:
+      1->Fellows, should ...
+      2->Being a surgeon ...
+      3->Let's run the i ...
+      4->Isn't it a bit  ...
+  New messages:
+      [1, Dr. Dolittle]->{2, 3}
+      [2, Dr. Frankenstein]->{1, 2, 4}
+      [3, Dr. Rieux]->{1, 3}
+      [4, Dr. Higgins]->{4}
+      [5, Florence Nightingale]->{4}
+      [7, Helen Fairchild]->{4}
+  Old/read messages:
+
+->send_message(4,3,"Hey, I heard this!")
+  45:  OK
+  Users:
+      1->Dr. Dolittle
+      2->Dr. Frankenstein
+      3->Dr. Rieux
+      4->Dr. Higgins
+      5->Florence Nightingale
+      6->Mary Todd Lincoln
+      7->Helen Fairchild
+      8->Office assistant
+  Groups:
+      1->Doctors
+      2->Nurses
+      3->Staff
+  Registrations:
+      [1, Dr. Dolittle]->{1->Doctors}
+      [2, Dr. Frankenstein]->{1->Doctors, 3->Staff}
+      [3, Dr. Rieux]->{1->Doctors}
+      [4, Dr. Higgins]->{2->Nurses, 3->Staff}
+      [5, Florence Nightingale]->{2->Nurses, 3->Staff}
+      [7, Helen Fairchild]->{2->Nurses, 3->Staff}
+      [8, Office assistant]->{3->Staff}
+  All messages:
+      1->Fellows, should ...
+      2->Being a surgeon ...
+      3->Let's run the i ...
+      4->Isn't it a bit  ...
+      5->Hey, I heard th ...
+  New messages:
+      [1, Dr. Dolittle]->{2, 3}
+      [2, Dr. Frankenstein]->{1, 2, 4, 5}
+      [3, Dr. Rieux]->{1, 3}
+      [4, Dr. Higgins]->{4}
+      [5, Florence Nightingale]->{4, 5}
+      [7, Helen Fairchild]->{4, 5}
+      [8, Office assistant]->{5}
+  Old/read messages:
+
+->list_new_messages(1)
+  46:  OK
+  New/unread messages for user [1, Dr. Dolittle]:
+      2->Being a surgeon ...
+      3->Let's run the i ...
+
+->list_new_messages(2)
+  47:  OK
+  New/unread messages for user [2, Dr. Frankenstein]:
+      1->Fellows, should ...
+      2->Being a surgeon ...
+      4->Isn't it a bit  ...
+      5->Hey, I heard th ...
+
+->list_new_messages(3)
+  48:  OK
+  New/unread messages for user [3, Dr. Rieux]:
+      1->Fellows, should ...
+      3->Let's run the i ...
+
+->list_new_messages(4)
+  49:  OK
+  New/unread messages for user [4, Dr. Higgins]:
+      4->Isn't it a bit  ...
+
+->list_new_messages(5)
+  50:  OK
+  New/unread messages for user [5, Florence Nightingale]:
+      4->Isn't it a bit  ...
+      5->Hey, I heard th ...
+
+->list_new_messages(9)
+  51:  ERROR 
+  User with this ID does not exist.
+
+->read_message(1,3)
+  52:  OK
+  Message for user [1, Dr. Dolittle]: [3, "Let's run the idea by our radiology team. They should be able to see right through it."]
+  Users:
+      1->Dr. Dolittle
+      2->Dr. Frankenstein
+      3->Dr. Rieux
+      4->Dr. Higgins
+      5->Florence Nightingale
+      6->Mary Todd Lincoln
+      7->Helen Fairchild
+      8->Office assistant
+  Groups:
+      1->Doctors
+      2->Nurses
+      3->Staff
+  Registrations:
+      [1, Dr. Dolittle]->{1->Doctors}
+      [2, Dr. Frankenstein]->{1->Doctors, 3->Staff}
+      [3, Dr. Rieux]->{1->Doctors}
+      [4, Dr. Higgins]->{2->Nurses, 3->Staff}
+      [5, Florence Nightingale]->{2->Nurses, 3->Staff}
+      [7, Helen Fairchild]->{2->Nurses, 3->Staff}
+      [8, Office assistant]->{3->Staff}
+  All messages:
+      1->Fellows, should ...
+      2->Being a surgeon ...
+      3->Let's run the i ...
+      4->Isn't it a bit  ...
+      5->Hey, I heard th ...
+  New messages:
+      [1, Dr. Dolittle]->{2}
+      [2, Dr. Frankenstein]->{1, 2, 4, 5}
+      [3, Dr. Rieux]->{1, 3}
+      [4, Dr. Higgins]->{4}
+      [5, Florence Nightingale]->{4, 5}
+      [7, Helen Fairchild]->{4, 5}
+      [8, Office assistant]->{5}
+  Old/read messages:
+      [1, Dr. Dolittle]->{3}
+
+->read_message(2,1)
+  53:  OK
+  Message for user [2, Dr. Frankenstein]: [1, "Fellows, should we take this patient in? As a cardiologist, I don't have the heart to say no."]
+  Users:
+      1->Dr. Dolittle
+      2->Dr. Frankenstein
+      3->Dr. Rieux
+      4->Dr. Higgins
+      5->Florence Nightingale
+      6->Mary Todd Lincoln
+      7->Helen Fairchild
+      8->Office assistant
+  Groups:
+      1->Doctors
+      2->Nurses
+      3->Staff
+  Registrations:
+      [1, Dr. Dolittle]->{1->Doctors}
+      [2, Dr. Frankenstein]->{1->Doctors, 3->Staff}
+      [3, Dr. Rieux]->{1->Doctors}
+      [4, Dr. Higgins]->{2->Nurses, 3->Staff}
+      [5, Florence Nightingale]->{2->Nurses, 3->Staff}
+      [7, Helen Fairchild]->{2->Nurses, 3->Staff}
+      [8, Office assistant]->{3->Staff}
+  All messages:
+      1->Fellows, should ...
+      2->Being a surgeon ...
+      3->Let's run the i ...
+      4->Isn't it a bit  ...
+      5->Hey, I heard th ...
+  New messages:
+      [1, Dr. Dolittle]->{2}
+      [2, Dr. Frankenstein]->{2, 4, 5}
+      [3, Dr. Rieux]->{1, 3}
+      [4, Dr. Higgins]->{4}
+      [5, Florence Nightingale]->{4, 5}
+      [7, Helen Fairchild]->{4, 5}
+      [8, Office assistant]->{5}
+  Old/read messages:
+      [1, Dr. Dolittle]->{3}
+      [2, Dr. Frankenstein]->{1}
+
+->read_message(2,2)
+  54:  OK
+  Message for user [2, Dr. Frankenstein]: [2, "Being a surgeon, I choose to wash my hands of the whole thing. "]
+  Users:
+      1->Dr. Dolittle
+      2->Dr. Frankenstein
+      3->Dr. Rieux
+      4->Dr. Higgins
+      5->Florence Nightingale
+      6->Mary Todd Lincoln
+      7->Helen Fairchild
+      8->Office assistant
+  Groups:
+      1->Doctors
+      2->Nurses
+      3->Staff
+  Registrations:
+      [1, Dr. Dolittle]->{1->Doctors}
+      [2, Dr. Frankenstein]->{1->Doctors, 3->Staff}
+      [3, Dr. Rieux]->{1->Doctors}
+      [4, Dr. Higgins]->{2->Nurses, 3->Staff}
+      [5, Florence Nightingale]->{2->Nurses, 3->Staff}
+      [7, Helen Fairchild]->{2->Nurses, 3->Staff}
+      [8, Office assistant]->{3->Staff}
+  All messages:
+      1->Fellows, should ...
+      2->Being a surgeon ...
+      3->Let's run the i ...
+      4->Isn't it a bit  ...
+      5->Hey, I heard th ...
+  New messages:
+      [1, Dr. Dolittle]->{2}
+      [2, Dr. Frankenstein]->{4, 5}
+      [3, Dr. Rieux]->{1, 3}
+      [4, Dr. Higgins]->{4}
+      [5, Florence Nightingale]->{4, 5}
+      [7, Helen Fairchild]->{4, 5}
+      [8, Office assistant]->{5}
+  Old/read messages:
+      [1, Dr. Dolittle]->{3}
+      [2, Dr. Frankenstein]->{1, 2}
+
+->read_message(2,2)
+  55:  ERROR 
+  Message has already been read. See `list_old_messages'.
+
+->list_old_messages(2)
+  56:  OK
+  Old/read messages for user [2, Dr. Frankenstein]:
+      1->Fellows, should ...
+      2->Being a surgeon ...
+
+->delete_message(2,2)
+  57:  OK
+  Users:
+      1->Dr. Dolittle
+      2->Dr. Frankenstein
+      3->Dr. Rieux
+      4->Dr. Higgins
+      5->Florence Nightingale
+      6->Mary Todd Lincoln
+      7->Helen Fairchild
+      8->Office assistant
+  Groups:
+      1->Doctors
+      2->Nurses
+      3->Staff
+  Registrations:
+      [1, Dr. Dolittle]->{1->Doctors}
+      [2, Dr. Frankenstein]->{1->Doctors, 3->Staff}
+      [3, Dr. Rieux]->{1->Doctors}
+      [4, Dr. Higgins]->{2->Nurses, 3->Staff}
+      [5, Florence Nightingale]->{2->Nurses, 3->Staff}
+      [7, Helen Fairchild]->{2->Nurses, 3->Staff}
+      [8, Office assistant]->{3->Staff}
+  All messages:
+      1->Fellows, should ...
+      2->Being a surgeon ...
+      3->Let's run the i ...
+      4->Isn't it a bit  ...
+      5->Hey, I heard th ...
+  New messages:
+      [1, Dr. Dolittle]->{2}
+      [2, Dr. Frankenstein]->{4, 5}
+      [3, Dr. Rieux]->{1, 3}
+      [4, Dr. Higgins]->{4}
+      [5, Florence Nightingale]->{4, 5}
+      [7, Helen Fairchild]->{4, 5}
+      [8, Office assistant]->{5}
+  Old/read messages:
+      [1, Dr. Dolittle]->{3}
+      [2, Dr. Frankenstein]->{1}
+
+->list_old_messages(2)
+  58:  OK
+  Old/read messages for user [2, Dr. Frankenstein]:
+      1->Fellows, should ...
+
+->delete_message(2,2)
+  59:  ERROR 
+  Message with this ID not found in old/read messages.
+
+->send_message(7,2,"As to diseases, make a habit of two things - to help, or at least, to do no harm.")
+  60:  OK
+  Users:
+      1->Dr. Dolittle
+      2->Dr. Frankenstein
+      3->Dr. Rieux
+      4->Dr. Higgins
+      5->Florence Nightingale
+      6->Mary Todd Lincoln
+      7->Helen Fairchild
+      8->Office assistant
+  Groups:
+      1->Doctors
+      2->Nurses
+      3->Staff
+  Registrations:
+      [1, Dr. Dolittle]->{1->Doctors}
+      [2, Dr. Frankenstein]->{1->Doctors, 3->Staff}
+      [3, Dr. Rieux]->{1->Doctors}
+      [4, Dr. Higgins]->{2->Nurses, 3->Staff}
+      [5, Florence Nightingale]->{2->Nurses, 3->Staff}
+      [7, Helen Fairchild]->{2->Nurses, 3->Staff}
+      [8, Office assistant]->{3->Staff}
+  All messages:
+      1->Fellows, should ...
+      2->Being a surgeon ...
+      3->Let's run the i ...
+      4->Isn't it a bit  ...
+      5->Hey, I heard th ...
+      6->As to diseases, ...
+  New messages:
+      [1, Dr. Dolittle]->{2}
+      [2, Dr. Frankenstein]->{4, 5}
+      [3, Dr. Rieux]->{1, 3}
+      [4, Dr. Higgins]->{4, 6}
+      [5, Florence Nightingale]->{4, 5, 6}
+      [7, Helen Fairchild]->{4, 5}
+      [8, Office assistant]->{5}
+  Old/read messages:
+      [1, Dr. Dolittle]->{3}
+      [2, Dr. Frankenstein]->{1}
+
+->set_message_preview(0)
+  61:  ERROR 
+  Message length must be greater than zero.
+
+->set_message_preview(25)
+  62:  OK
+  Users:
+      1->Dr. Dolittle
+      2->Dr. Frankenstein
+      3->Dr. Rieux
+      4->Dr. Higgins
+      5->Florence Nightingale
+      6->Mary Todd Lincoln
+      7->Helen Fairchild
+      8->Office assistant
+  Groups:
+      1->Doctors
+      2->Nurses
+      3->Staff
+  Registrations:
+      [1, Dr. Dolittle]->{1->Doctors}
+      [2, Dr. Frankenstein]->{1->Doctors, 3->Staff}
+      [3, Dr. Rieux]->{1->Doctors}
+      [4, Dr. Higgins]->{2->Nurses, 3->Staff}
+      [5, Florence Nightingale]->{2->Nurses, 3->Staff}
+      [7, Helen Fairchild]->{2->Nurses, 3->Staff}
+      [8, Office assistant]->{3->Staff}
+  All messages:
+      1->Fellows, should we take t ...
+      2->Being a surgeon, I choose ...
+      3->Let's run the idea by our ...
+      4->Isn't it a bit unnerving  ...
+      5->Hey, I heard this!
+      6->As to diseases, make a ha ...
+  New messages:
+      [1, Dr. Dolittle]->{2}
+      [2, Dr. Frankenstein]->{4, 5}
+      [3, Dr. Rieux]->{1, 3}
+      [4, Dr. Higgins]->{4, 6}
+      [5, Florence Nightingale]->{4, 5, 6}
+      [7, Helen Fairchild]->{4, 5}
+      [8, Office assistant]->{5}
+  Old/read messages:
+      [1, Dr. Dolittle]->{3}
+      [2, Dr. Frankenstein]->{1}
+
+->list_new_messages(3)
+  63:  OK
+  New/unread messages for user [3, Dr. Rieux]:
+      1->Fellows, should we take t ...
+      3->Let's run the idea by our ...
+
+->list_groups
+  64:  OK
+  1->Doctors
+  2->Nurses
+  3->Staff
+
+->list_users
+  65:  OK
+  1->Dr. Dolittle
+  2->Dr. Frankenstein
+  4->Dr. Higgins
+  3->Dr. Rieux
+  5->Florence Nightingale
+  7->Helen Fairchild
+  6->Mary Todd Lincoln
+  8->Office assistant

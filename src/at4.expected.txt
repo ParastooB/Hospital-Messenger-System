@@ -1,0 +1,327 @@
+  0:  OK
+
+->add_user(2,"Ben")
+  1:  OK
+  Users:
+      2->Ben
+  Groups:
+  Registrations:
+  All messages:
+  New messages:
+  Old/read messages:
+
+->add_user(1,"Ben")
+  2:  OK
+  Users:
+      1->Ben
+      2->Ben
+  Groups:
+  Registrations:
+  All messages:
+  New messages:
+  Old/read messages:
+
+->add_group(3,"Doctors")
+  3:  OK
+  Users:
+      1->Ben
+      2->Ben
+  Groups:
+      3->Doctors
+  Registrations:
+  All messages:
+  New messages:
+  Old/read messages:
+
+->add_group(1,"Doctors")
+  4:  OK
+  Users:
+      1->Ben
+      2->Ben
+  Groups:
+      1->Doctors
+      3->Doctors
+  Registrations:
+  All messages:
+  New messages:
+  Old/read messages:
+
+->register_user(1,3)
+  5:  OK
+  Users:
+      1->Ben
+      2->Ben
+  Groups:
+      1->Doctors
+      3->Doctors
+  Registrations:
+      [1, Ben]->{3->Doctors}
+  All messages:
+  New messages:
+  Old/read messages:
+
+->register_user(1,1)
+  6:  OK
+  Users:
+      1->Ben
+      2->Ben
+  Groups:
+      1->Doctors
+      3->Doctors
+  Registrations:
+      [1, Ben]->{1->Doctors, 3->Doctors}
+  All messages:
+  New messages:
+  Old/read messages:
+
+->add_user(5,"May")
+  7:  OK
+  Users:
+      1->Ben
+      2->Ben
+      5->May
+  Groups:
+      1->Doctors
+      3->Doctors
+  Registrations:
+      [1, Ben]->{1->Doctors, 3->Doctors}
+  All messages:
+  New messages:
+  Old/read messages:
+
+->add_user(6," Jane")
+  8:  ERROR 
+  User name must start with a letter.
+
+->register_user(2,1)
+  9:  OK
+  Users:
+      1->Ben
+      2->Ben
+      5->May
+  Groups:
+      1->Doctors
+      3->Doctors
+  Registrations:
+      [1, Ben]->{1->Doctors, 3->Doctors}
+      [2, Ben]->{1->Doctors}
+  All messages:
+  New messages:
+  Old/read messages:
+
+->register_user(1,5)
+  10:  ERROR 
+  Group with this ID does not exist.
+
+->register_user(5,1)
+  11:  OK
+  Users:
+      1->Ben
+      2->Ben
+      5->May
+  Groups:
+      1->Doctors
+      3->Doctors
+  Registrations:
+      [1, Ben]->{1->Doctors, 3->Doctors}
+      [2, Ben]->{1->Doctors}
+      [5, May]->{1->Doctors}
+  All messages:
+  New messages:
+  Old/read messages:
+
+->send_message(1,1,"Hey, this is Ben")
+  12:  OK
+  Users:
+      1->Ben
+      2->Ben
+      5->May
+  Groups:
+      1->Doctors
+      3->Doctors
+  Registrations:
+      [1, Ben]->{1->Doctors, 3->Doctors}
+      [2, Ben]->{1->Doctors}
+      [5, May]->{1->Doctors}
+  All messages:
+      1->Hey, this is Be ...
+  New messages:
+      [2, Ben]->{1}
+      [5, May]->{1}
+  Old/read messages:
+
+->send_message(2,1,"Hello , Ben Fromm Here")
+  13:  OK
+  Users:
+      1->Ben
+      2->Ben
+      5->May
+  Groups:
+      1->Doctors
+      3->Doctors
+  Registrations:
+      [1, Ben]->{1->Doctors, 3->Doctors}
+      [2, Ben]->{1->Doctors}
+      [5, May]->{1->Doctors}
+  All messages:
+      1->Hey, this is Be ...
+      2->Hello , Ben Fro ...
+  New messages:
+      [1, Ben]->{2}
+      [2, Ben]->{1}
+      [5, May]->{1, 2}
+  Old/read messages:
+
+->read_message(1,1)
+  14:  ERROR 
+  Message has already been read. See `list_old_messages'.
+
+->read_message(2,1)
+  15:  OK
+  Message for user [2, Ben]: [1, "Hey, this is Ben"]
+  Users:
+      1->Ben
+      2->Ben
+      5->May
+  Groups:
+      1->Doctors
+      3->Doctors
+  Registrations:
+      [1, Ben]->{1->Doctors, 3->Doctors}
+      [2, Ben]->{1->Doctors}
+      [5, May]->{1->Doctors}
+  All messages:
+      1->Hey, this is Be ...
+      2->Hello , Ben Fro ...
+  New messages:
+      [1, Ben]->{2}
+      [5, May]->{1, 2}
+  Old/read messages:
+      [2, Ben]->{1}
+
+->send_message(5,1,"Hello , this is May")
+  16:  OK
+  Users:
+      1->Ben
+      2->Ben
+      5->May
+  Groups:
+      1->Doctors
+      3->Doctors
+  Registrations:
+      [1, Ben]->{1->Doctors, 3->Doctors}
+      [2, Ben]->{1->Doctors}
+      [5, May]->{1->Doctors}
+  All messages:
+      1->Hey, this is Be ...
+      2->Hello , Ben Fro ...
+      3->Hello , this is ...
+  New messages:
+      [1, Ben]->{2, 3}
+      [2, Ben]->{3}
+      [5, May]->{1, 2}
+  Old/read messages:
+      [2, Ben]->{1}
+
+->read_message(2,2)
+  17:  ERROR 
+  Message has already been read. See `list_old_messages'.
+
+->read_message(5,3)
+  18:  ERROR 
+  Message has already been read. See `list_old_messages'.
+
+->delete_message(5,3)
+  19:  ERROR 
+  Message with this ID not found in old/read messages.
+
+->delete_message(1,1)
+  20:  ERROR 
+  Message with this ID not found in old/read messages.
+
+->list_old_messages(1)
+  21:  OK
+  There are no old messages for this user.
+
+->list_old_messages(2)
+  22:  OK
+  Old/read messages for user [2, Ben]:
+      1->Hey, this is Be ...
+
+->list_old_messages(3)
+  23:  ERROR 
+  User with this ID does not exist.
+
+->list_old_messages(5)
+  24:  OK
+  There are no old messages for this user.
+
+->list_new_messages(1)
+  25:  OK
+  New/unread messages for user [1, Ben]:
+      2->Hello , Ben Fro ...
+      3->Hello , this is ...
+
+->list_new_messages(2)
+  26:  OK
+  New/unread messages for user [2, Ben]:
+      3->Hello , this is ...
+
+->list_new_messages(3)
+  27:  ERROR 
+  User with this ID does not exist.
+
+->list_new_messages(5)
+  28:  OK
+  New/unread messages for user [5, May]:
+      1->Hey, this is Be ...
+      2->Hello , Ben Fro ...
+
+->set_message_preview(1)
+  29:  OK
+  Users:
+      1->Ben
+      2->Ben
+      5->May
+  Groups:
+      1->Doctors
+      3->Doctors
+  Registrations:
+      [1, Ben]->{1->Doctors, 3->Doctors}
+      [2, Ben]->{1->Doctors}
+      [5, May]->{1->Doctors}
+  All messages:
+      1->H ...
+      2->H ...
+      3->H ...
+  New messages:
+      [1, Ben]->{2, 3}
+      [2, Ben]->{3}
+      [5, May]->{1, 2}
+  Old/read messages:
+      [2, Ben]->{1}
+
+->add_user(8,"Franck")
+  30:  OK
+  Users:
+      1->Ben
+      2->Ben
+      5->May
+      8->Franck
+  Groups:
+      1->Doctors
+      3->Doctors
+  Registrations:
+      [1, Ben]->{1->Doctors, 3->Doctors}
+      [2, Ben]->{1->Doctors}
+      [5, May]->{1->Doctors}
+  All messages:
+      1->H ...
+      2->H ...
+      3->H ...
+  New messages:
+      [1, Ben]->{2, 3}
+      [2, Ben]->{3}
+      [5, May]->{1, 2}
+  Old/read messages:
+      [2, Ben]->{1}
