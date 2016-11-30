@@ -239,10 +239,10 @@ public class Messages {
 			
 			for(int i = 0; i<list.size() ; i++){
 				if(allms.get(list.get(i)).length() < preview) {
-					System.out.println("      " + list.get(i) + "->"  + allms.get(list.get(i)).replaceAll("\\p{C}", ""));
+					System.out.println("      " + list.get(i) + "->"  + allms.get(list.get(i)));
 				}
 				else{
-					System.out.println("      " + list.get(i) + "->"  + allms.get(list.get(i)).substring(0 , preview).replaceAll("\\p{C}", "") +" ...");
+					System.out.println("      " + list.get(i) + "->"  + allms.get(list.get(i)).substring(0 , preview) +" ...");
 				}
 			}
 			
@@ -272,10 +272,10 @@ public class Messages {
 			ArrayList<Integer> list = map.get(u_id);
 			for(int i = 0; i<list.size() ; i++){
 				if(allms.get(list.get(i)).length() < preview) {
-					System.out.println("      " + list.get(i) + "->"  + allms.get(list.get(i)).replaceAll("\\p{C}", ""));
+					System.out.println("      " + list.get(i) + "->"  + allms.get(list.get(i)));
 				}
 				else{
-					System.out.println("      " + list.get(i) + "->"  + allms.get(list.get(i)).substring(0 , preview).replaceAll("\\p{C}", "") +" ...");
+					System.out.println("      " + list.get(i) + "->"  + allms.get(list.get(i)).substring(0 , preview)+" ...");
 				}
 			}
 			
@@ -288,10 +288,10 @@ public class Messages {
 		while(i.hasNext()){
 			Map.Entry<Integer, String> token = i.next();
 			if(token.getValue().length() < preview){
-			System.out.print("      " + token.getKey() + "->" + token.getValue().replaceAll("\\p{C}", "")  +"\n");
+			System.out.print("      " + token.getKey() + "->" + token.getValue() +"\n");
 			}
 			else{
-			System.out.print("      " + token.getKey() + "->" + token.getValue().substring(0,preview).replaceAll("\\p{C}", "")  +" ...\n");
+			System.out.print("      " + token.getKey() + "->" + token.getValue().substring(0,preview) +" ...\n");
 			}
 		}
 	}
