@@ -19,9 +19,15 @@ public class messenger {
 		// Scan file line by line
 		Commands m = new Commands();
 		Scanner sc = new Scanner(input).useDelimiter("\n");
-		System.out.println("  " + count + ":  OK");
-		while (sc.hasNextLine()) {
+		
+		while ( sc.hasNextLine()) {
+			if(!sc.hasNext()){
+				break;
+			}
+			else{
 			String command = sc.next();
+			System.out.println("  " + count + ":  OK");
+			
 
 			String[] tokens = command.split("_"); // split string 1st time by
 													// "_"
@@ -137,7 +143,7 @@ public class messenger {
 				System.out.println("->set_message_preview(" + n + ")");
 				m.set_message_preview(n, count);
 			}
-
+			}	
 		}
 		sc.close();
 
